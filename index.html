@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 36th KKHTCNN Symposium on Civil Engineering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2b6cb0;
+            --accent: #e53e3e;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --gray: #718096;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        /* Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-placeholder {
+            width: 180px;
+            height: 50px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            color: #999;
+            font-size: 14px;
+            border: 1px dashed #ccc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+            font-size: 1.3rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #222549 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0.95;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/bg-long.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1; /* 控制背景图片的透明度 */
+            z-index: 1;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .hero .btn {
+            background-color: var(--secondary);
+        }
+        
+        .hero .btn-outline {
+            background-color: transparent;
+            border-color: white;
+            color: white;
+        }
+        
+        .hero .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border: 1px dashed #ccc;
+        }
+        
+        /* Schedule Section */
+        .schedule {
+            background-color: #f5f7fa;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--secondary);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .timeline-time {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        /* Venue Section */
+        .venue-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .venue-text {
+            flex: 1;
+        }
+        
+        .venue-image {
+            flex: 1;
+            height: 400px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border: 1px dashed #ccc;
+        }
+        
+        .venue-details {
+            margin-top: 30px;
+        }
+        
+        .venue-details h3 {
+            margin-bottom: 15px;
+        }
+        
+        .venue-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .venue-details li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .venue-details li:before {
+            content: "•";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Organizers Section */
+        .organizers {
+            background-color: #f5f7fa;
+        }
+        
+        .organizer-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .organizer-intro h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .organizer-intro p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        /* 修改布局，使三个卡片在第一行居中，四个卡片在第二行居中 */
+        .organizers-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .organizers-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            width: 100%;
+        }
+        
+        .organizer-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            width: 320px;
+        }
+        
+        .organizer-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .organizer-card.host {
+            border-top: 4px solid #e74c3c;
+        }
+        
+        .organizer-card:not(.host) {
+            border-top: 4px solid #3498db;
+        }
+        
+        /* 修复图片容器 - 移除固定高度，使用padding-bottom创建比例 */
+        .organizer-img {
+            height: 0;
+            padding-bottom: 40%; /* 创建4:5的宽高比 */
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 图片样式 - 使用绝对定位填充容器 */
+        .organizer-img img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 保持图片比例，不拉伸 */
+            padding: 20px;
+        }
+        
+        .organizer-img:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(231, 76, 60, 0.1) 100%);
+        }
+        
+        .organizer-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .organizer-name {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .organizer-role {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        
+        .organizer-affiliation {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .coordinator-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+        }
+        
+        .coordinator-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .coordinator-contact {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+        }
+        
+        
+        .partner-universities {
+            text-align: center;
+            padding: 40px 0 20px;
+            border-top: 1px solid #ddd;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .partner-universities h3 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+        
+        .university-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .university-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+        }
+        
+        .university-logo img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .university-logo img:hover {
+            transform: scale(1.05);
+        }
+        
+        .university-logo span {
+            font-size: 0.9rem;
+            color: #2c3e50;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .organizers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .university-logos {
+                gap: 20px;
+            }
+            
+            .university-logo {
+                width: 120px;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .university-logos {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .university-logo {
+                width: 80%;
+                flex-direction: row;
+                justify-content: flex-start;
+                text-align: left;
+            }
+            
+            .university-logo img {
+                width: 60px;
+                height: 60px;
+                margin-right: 15px;
+                margin-bottom: 0;
+            }
+        }
+        /* Downloads Section */
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .download-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .download-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .download-info h3 {
+            margin-bottom: 10px;
+        }
+        
+        .download-info p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo .logo-placeholder {
+            background-color: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            border-color: rgba(255,255,255,0.2);
+        }
+        
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .venue-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .venue-image {
+                width: 100%;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px;
+            }
+            
+            .timeline-item:before {
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <!-- <div class="logo-placeholder">Conference Logo</div> -->
+                    <image src="images/Conference-Logo.png" alt="Conference Logo Text" style="height: 80px; margin-left: 10px;">
+                </div>
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#venue">Venue</a></li>
+                    <li><a href="#organizers">Organizers</a></li>
+                    <li><a href="#downloads">Downloads</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>The 36th KKHTCNN Symposium on Civil Engineering</h1>
+            <p>2-5 December 2025, Hong Kong, China</p>
+            <div class="hero-btns">
+                <a href="#about" class="btn">Learn More</a>
+                <a href="#downloads" class="btn btn-outline">Download Materials</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About the Conference</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Connect. Innovate. Collaborate.</h3>
+                    <p>The 36th KKHTCNN Symposium on Civil Engineering is a premier international event bringing together leading experts, researchers, and professionals in the field of civil engineering. This year, we are honored to host the symposium in the vibrant city of Hong Kong, with the theme "Sustainable Infrastructure for Future Cities".</p>
+                    <p>The conference will cover cutting-edge topics including structural engineering, geotechnical engineering, construction management, sustainable materials, and smart infrastructure. Through keynote speeches, technical sessions, workshops, and networking events, we provide participants with opportunities for knowledge exchange and collaboration.</p>
+                    <p>Whether you're an academic researcher, industry professional, or engineering student, the 36th KKHTCNN Symposium will offer valuable insights, connections, and inspiration for your work and career.</p>
+                    <a href="#schedule" class="btn">View Schedule</a>
+                </div>
+                <div class="about-image">
+                    Conference Venue Image
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule" id="schedule">
+        <div class="container">
+            <div class="section-header">
+                <h2>Conference Schedule</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">Day1: 09:00 - 12:00</div>
+                        <h3>Opening Ceremony & Keynotes</h3>
+                        <p>Conference chair delivers opening remarks, followed by keynote speech exploring technology trends and future opportunities.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">Day1: 14:00 - 18:00</div>
+                        <h3>Parallel Technical Sessions</h3>
+                        <p>Parallel Technical Sessions</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">Day1: 18:00 - 20:00</div>
+                        <h3>Welcomming dinner</h3>
+                        <p>Welcomming dinner</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">Day2: 9:00 - 12:00 & 14:00 - 18:00</div>
+                        <h3>Parallel Technical Sessions</h3>
+                        <p>Discussion on leveraging technological innovation to address global challenges like climate change and resource scarcity.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">Day 2: 18:00 - 20:00</div>
+                        <h3>Banquet</h3>
+                        <p>Banquet.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">Day 3: 9:00 - 12:00</div>
+                        <h3>Technical tour</h3>
+                        <p>Technical tour</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section id="venue">
+        <div class="container">
+            <div class="section-header">
+                <h2>Conference Venue</h2>
+            </div>
+            <div class="venue-content">
+                <div class="venue-text">
+                    <h3>Hong Kong Convention and Exhibition Centre</h3>
+                    <p>The 36th KKHTCNN Symposium on Civil Engineering will be held at the prestigious Hong Kong Convention and Exhibition Centre, one of Asia's most iconic and well-equipped event venues.</p>
+                    <p>Located in the heart of Hong Kong's vibrant business district, the HKCEC offers state-of-the-art facilities, excellent transport connections, and breathtaking views of Victoria Harbour.</p>
+                    
+                    <div class="venue-details">
+                        <h3>Venue Details</h3>
+                        <ul>
+                            <li><strong>Address:</strong> 1 Expo Drive, Wan Chai, Hong Kong</li>
+                            <li><strong>Capacity:</strong> Up to 5,000 attendees</li>
+                            <li><strong>Facilities:</strong> Multiple conference halls, exhibition areas, breakout rooms, and business centers</li>
+                            <li><strong>Transportation:</strong> Easily accessible via MTR, bus, taxi, and ferry services</li>
+                            <li><strong>Accommodation:</strong> Numerous hotels within walking distance</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#downloads" class="btn">Download Venue Guide</a>
+                </div>
+                <div class="venue-image">
+                    Conference Venue Image
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="organizers" id="organizers">
+        <div class="container">
+            <div class="section-header">
+                <h2>Conference Organizers & Organization Committees</h2>
+            </div>
+            
+            <div class="organizer-intro">
+                <h3>Conference Host</h3>
+                <p>The 36th KKHTCNN Symposium on Civil Engineering is proudly hosted by the Hong Kong University of Science and Technology (HKUST), in collaboration with six distinguished partner universities from across Asia.</p>
+            </div>
+            
+            <div class="organizers-grid">
+                <!-- 第一行 - 三个卡片 -->
+                <div class="organizers-row">
+                    <!-- HKUST (Host) -->
+                    <div class="organizer-card host">
+                        <div class="organizer-img">
+                            <img src="images/HKUST.png" alt="HKUST">
+                        </div>
+                        <div class="organizer-info">
+                            <h3 class="organizer-name">The Hong Kong University of Science and Technology</h3>
+                            <p class="organizer-role">Host University</p>
+                            <div class="coordinator-info">
+                                <p class="coordinator-name">Prof. Xueqing (Eric) Zhang</p>
+                                <p class="coordinator-contact">Email: xqzhang@ust.hk</p>
+                                <p class="coordinator-contact">Tel: +852 2358 7182</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kyoto University -->
+                    <div class="organizer-card">
+                        <div class="organizer-img">
+                            <img src="images/KU.png" alt="Kyoto University">
+                        </div>
+                        <div class="organizer-info">
+                            <h3 class="organizer-name">Kyoto University</h3>
+                            <p class="organizer-role">Partner University</p>
+                            <div class="coordinator-info">
+                                <p class="coordinator-name">Prof. Hideaki Yasuhara</p>
+                                <p class="coordinator-contact">Email: yasuhara.hideaki.3a@kyoto-u.ac.jp</p>
+                                <p class="coordinator-contact">Tel: +81 75-753-5152</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- KAIST -->
+                    <div class="organizer-card">
+                        <div class="organizer-img">
+                            <img src="images/KAIST1.png" alt="KAIST">
+                        </div>
+                        <div class="organizer-info">
+                            <h3 class="organizer-name">Korea Advanced Institute of Science and Technology</h3>
+                            <p class="organizer-role">Partner University</p>
+                            <div class="coordinator-info">
+                                <p class="coordinator-name">Prof. Hyung-Jo Jung</p>
+                                <p class="coordinator-contact">Email: hjjung@kaist.ac.kr</p>
+                                <p class="coordinator-contact">Tel: +82 42-350-3623</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第二行 - 四个卡片 -->
+                <div class="organizers-row">
+                    <!-- Tongji University -->
+                    <div class="organizer-card">
+                        <div class="organizer-img">
+                            <img src="images/Tongji.png" alt="Tongji University">
+                        </div>
+                        <div class="organizer-info">
+                            <h3 class="organizer-name">Tongji University</h3>
+                            <p class="organizer-role">Partner University</p>
+                            <div class="coordinator-info">
+                                <p class="coordinator-name">Prof. Fang Liu</p>
+                                <p class="coordinator-contact">Email: liufang@tongji.edu.cn</p>
+                                <p class="coordinator-contact">Tel: +86 21 6598 2289</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chulalongkorn University -->
+                    <div class="organizer-card">
+                        <div class="organizer-img">
+                            <img src="images/Chulalongkorn.png" alt="Chulalongkorn University">
+                        </div>
+                        <div class="organizer-info">
+                            <h3 class="organizer-name">Chulalongkorn University</h3>
+                            <p class="organizer-role">Partner University</p>
+                            <div class="coordinator-info">
+                                <p class="coordinator-name">Prof. Suched Likitlersuang</p>
+                                <p class="coordinator-contact">Email: suched.l@chula.ac.th</p>
+                                <p class="coordinator-contact">Tel: +66 2 218 6488</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- National Taiwan University -->
+                    <div class="organizer-card">
+                        <div class="organizer-img">
+                            <img src="images/Taiwan.png" alt="National Taiwan University">
+                        </div>
+                        <div class="organizer-info">
+                            <h3 class="organizer-name">National Taiwan University</h3>
+                            <p class="organizer-role">Partner University</p>
+                            <div class="coordinator-info">
+                                <p class="coordinator-name">Prof. Albert Y. Chen</p>
+                                <p class="coordinator-contact">Email: albertychen@ntu.edu.tw</p>
+                                <p class="coordinator-contact">Tel: +886 2 3366 4321</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- National University of Singapore -->
+                    <div class="organizer-card">
+                        <div class="organizer-img">
+                            <img src="images/Singapore.png" alt="National University of Singapore">
+                        </div>
+                        <div class="organizer-info">
+                            <h3 class="organizer-name">National University of Singapore</h3>
+                            <p class="organizer-role">Partner University</p>
+                            <div class="coordinator-info">
+                                <p class="coordinator-name">Prof. Sze Dai Pang</p>
+                                <p class="coordinator-contact">Email: sdpang@nus.edu.sg</p>
+                                <p class="coordinator-contact">Tel: +65 6516 2106</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="partner-universities">
+                <h3>Partner Universities</h3>
+                <div class="university-logos">
+                    <div class="university-logo">
+                        <img src="images/KU.png" alt="Kyoto University">
+                        <span>Kyoto University</span>
+                    </div>
+                    <div class="university-logo">
+                        <img src="images/KAIST1.png" alt="KAIST">
+                        <span>KAIST</span>
+                    </div>
+                    <div class="university-logo">
+                        <img src="images/HKUST.png" alt="The Hong Kong University of Science and Technology">
+                        <span>The Hong Kong University of Science and Technology</span>
+                    </div>
+                    <div class="university-logo">
+                        <img src="images/Tongji.png" alt="Tongji University">
+                        <span>Tongji University</span>
+                    </div>
+                    <div class="university-logo">
+                        <img src="images/Chulalongkorn.png" alt="Chulalongkorn University">
+                        <span>Chulalongkorn University</span>
+                    </div>
+                    <div class="university-logo">
+                        <img src="images/Taiwan.png" alt="National Taiwan University">
+                        <span>National Taiwan University</span>
+                    </div>
+                    <div class="university-logo">
+                        <img src="images/Singapore.png" alt="National University of Singapore">
+                        <span>National University of Singapore</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads Section -->
+    <section id="downloads">
+        <div class="container">
+            <div class="section-header">
+                <h2>Conference Materials</h2>
+            </div>
+            <div class="downloads-grid">
+                <div class="download-card">
+                    <div class="download-icon">📄</div>
+                    <div class="download-info">
+                        <h3>Detailed Conference Agenda</h3>
+                        <p>Complete schedule, breakout sessions, and detailed program information.</p>
+                        <a href="#" class="btn">Download PDF</a>
+                    </div>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">🗺️</div>
+                    <div class="download-info">
+                        <h3>Venue Map & Guide</h3>
+                        <p>Venue layout, facility locations, and transportation guide.</p>
+                        <a href="#" class="btn">Download PDF</a>
+                    </div>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">👥</div>
+                    <div class="download-info">
+                        <h3>Attendee List</h3>
+                        <p>List of confirmed attendees (public information only).</p>
+                        <a href="#" class="btn">Download PDF</a>
+                    </div>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">📊</div>
+                    <div class="download-info">
+                        <h3>Proceedings</h3>
+                        <p>Conference proceedings.</p>
+                        <a href="#" class="btn">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <!-- <div class="logo-placeholder">Conference Logo</div> -->
+                        <image src="images/Conference-Logo-gray.png" alt="Conference Logo Text" style="height: 80px; margin-left: 10px;"></image>
+                    </div>
+                    <p>The 36th KKHTCNN Symposium on Civil Engineering brings together leading experts, researchers, and professionals to advance the field of civil engineering through knowledge sharing and collaboration.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#schedule">Schedule</a></li>
+                        <li><a href="#venue">Venue</a></li>
+                        <li><a href="#organizers">Organizers</a></li>
+                        <li><a href="#downloads">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li>Email: info@kkhtcnn2024.com</li>
+                        <li>Phone: +852 1234 5678</li>
+                        <li>Address: The Hong Kong University of Science and Technology, Clear Water Bay, Kowloon, Hong Kong</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 The 36th KKHTCNN Symposium on Civil Engineering. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('.nav-links').classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
