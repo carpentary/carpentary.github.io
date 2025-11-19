@@ -427,6 +427,37 @@
             display: block;
         }
 
+        .download-prompt {
+        text-align: center;
+        margin: 0 auto 10px; /* 上下边距为0，下边距10px，左右自动 */
+        padding: 10px;
+        background: #e8f4fc;
+        border-radius: 8px;
+        border-left: 4px solid #3498db;
+        font-size: 1.1rem;
+        color: #2d3748;
+        max-width: 800px;
+    }
+        
+        .download-link {
+            color: #3498db;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px dashed #3498db;
+            padding-bottom: 1px;
+        }
+        
+        .download-link:hover {
+            color: #2980b9;
+            border-bottom: 1px solid #2980b9;
+        }
+        
+        .download-link i {
+            margin-right: 5px;
+            font-size: 0.9em;
+        }
+
         .day-header {
             text-align: center;
             margin-bottom: 40px;
@@ -776,26 +807,6 @@
 
         .tip-item p {
             margin-bottom: 10px;
-        }
-
-        .path-advisor-link {
-            display: inline-flex;
-            align-items: center;
-            background: #2c3e50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .path-advisor-link:hover {
-            background: #1a2530;
-        }
-
-        .path-advisor-link i {
-            margin-right: 8px;
         }
 
         /* Additional Venue Information */
@@ -1814,6 +1825,15 @@
             <div class="section-header">
                 <h2>Conference Schedule</h2>
             </div>
+
+            <!-- 简洁的下载提示 -->
+            <div class="download-prompt">
+                For a more detailed schedule, please 
+                <a href="/downloads/Program.pdf" class="download-link" download>
+                    <i class="fas fa-download"></i>download the complete program (PDF)
+                </a>
+            </div>
+
             <!-- Day Navigation -->
             <div class="schedule-nav">
                 <button class="schedule-tab active" data-day="day1">Day 1</button>
@@ -2072,7 +2092,7 @@
                     <div class="tip-item">
                         <h4><i class="fas fa-mobile-alt"></i> HKUST Path Advisor</h4>
                         <p>For real-time navigation assistance on campus, we recommend using the official HKUST Path Advisor app. This helpful tool provides step-by-step directions to any location on campus.</p>
-                        <a href="https://pathadvisor.ust.hk" class="path-advisor-link" target="_blank">
+                        <a href="https://pathadvisor.ust.hk" class="btn" target="_blank">
                             <i class="fas fa-external-link-alt"></i> Open Path Advisor
                         </a>
                     </div>
@@ -2241,7 +2261,7 @@
                     <div class="download-icon">📊</div>
                     <div class="download-info">
                         <h3>Proceedings</h3>
-                        <p>Conference proceedings includings all abstracts submitted.</p>
+                        <p>Conference proceedings includings all abstracts and full papers submitted.</p>
                         <a href="#" class="btn">Download PDF</a>
                     </div>
                 </div>
